@@ -1,0 +1,25 @@
+name: 'AWS CLI'
+description: "Automated installation of AWS CLI on a Linux host."
+author: 'satyampsoni'
+inputs:
+  version:
+    description: "Version of AWS CLI to install"
+    required: True
+    default: "latest"
+  arch:
+    description: "Default is amd64"
+    required: False
+    default: "x86_64"
+  install-dir:
+    description: "Directory where AWS CLI will be installed"
+    required: False
+    default: "/usr/local/bin"
+outputs:
+  aws-cli-version:
+    description: "Version of AWS CLI installed"
+    value: ${{ steps.install_aws_cli.outputs.version }}
+runs:
+  using: 'composite'
+  steps:
+    - run: ./install-aws-cli
+      shell: bash

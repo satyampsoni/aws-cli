@@ -1,0 +1,17 @@
+name: "Test the AWS CLI"
+
+on: [push]
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v2
+
+            - name: Install AWS CLI
+              uses: satyampsoni/aws-cli@main
+              with:
+                version: 'latest'
+                arch: 'x86_64'
+                install-dir: '/usr/local/bin'
